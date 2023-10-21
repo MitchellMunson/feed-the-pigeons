@@ -8,12 +8,16 @@ import { HomeComponent } from './home/home.component';
 import { SharedModule } from "./shared/shared.module";
 import { HeaderComponent } from './common/header/header.component';
 import { FooterComponent } from './common/footer/footer.component';
+import { GroupsViewComponent } from './groups/groups-view/groups-view.component';
+import { GroupsListComponent } from './groups/groups-list/groups-list.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    GroupsViewComponent,
+    GroupsListComponent
   ],
   imports: [
     BrowserModule,

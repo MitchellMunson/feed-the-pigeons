@@ -1,17 +1,18 @@
 
 export interface UserAccessRequest {
-  email: string,
+  userEmail: string,
   username: string,
   requestDate: Date,
-}
-
-export enum UserAccessApproved {
-  APPROVED = 'A',
-  DISAPPROVED = 'D',
-  UNDECIDED = 'U'
+  approvalResponse: UserAccessDecision
 }
 
 export interface UserAccessResponse {
-  email: string,
-  isApproved: boolean
+  userEmail: string,
+  approvalResponse: UserAccessDecision
+}
+
+export enum UserAccessDecision {
+  APPROVED = 'A',
+  DISAPPROVED = 'D',
+  UNDECIDED = 'U'
 }

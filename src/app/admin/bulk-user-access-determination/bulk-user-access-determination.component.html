@@ -1,0 +1,13 @@
+<div class="mb-3">
+  <button
+    (click)="onSaveResponses()"
+    [disabled]="!isSaveResponsesEnabled()"
+    type="button"
+    class="btn btn-primary">
+    Save Responses
+  </button>
+</div>
+
+<app-user-access-determination-editor
+  [userAccessRequests]="userAccessRequests"
+  (isSaveEnabled)="updateIsSaveEnabled($event)"></app-user-access-determination-editor>

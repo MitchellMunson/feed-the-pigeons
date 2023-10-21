@@ -1,0 +1,39 @@
+<form [formGroup]="userAccessForm">
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">Username</th>
+      <th scope="col">Email</th>
+      <th scope="col">Approve/Disapprove</th>
+    </tr>
+    </thead>
+    <tbody formArrayName="userAccessResponses">
+    <ng-container *ngFor="let formRow of userAccessResponses.controls; let rowIndex = index;">
+      <tr [formGroupName]="rowIndex">
+        <th scope="row">{{this.userAccessRequests[rowIndex].username}}</th>
+        <td>
+          {{this.userAccessRequests[rowIndex].userEmail}}
+          <input
+            type="hidden"
+            id="userEmail-{{rowIndex}}-id"
+            formControlName="userEmail">
+        </td>
+        <td>
+          <select
+            (change)="onChangeApprovalResponse()"
+            class="form-select"
+            id="userResponse-{{rowIndex}}-id"
+            formControlName="approvalResponse"
+            aria-label="Approve/Disapprove">
+            <option value="U">Undecided</option>
+            <option value="A">Approve</option>
+            <option value="D">Disapproved</option>
+          </select>
+        </td>
+      </tr>
+    </ng-container>
+    </tbody>
+  </table>
+
+</form>

@@ -1,0 +1,72 @@
+<div
+  [formGroup]="userSearchForm"
+  class="row mb-3 align-items-end">
+
+  <div class="col-2">
+    <label
+      for="user-search-text-id"
+      class="form-label">
+      User Search
+    </label>
+    <input
+      type="text"
+      class="form-control"
+      id="user-search-text-id"
+      name="userSearchText"
+      formControlName="userSearchText">
+  </div>
+
+  <div class="col-1">
+    <button
+      (click)="onClickSearch()"
+      [disabled]="!isSearchEnabled()"
+      id="search-user-btn"
+      type="button"
+      class="btn btn-primary">
+      Search
+    </button>
+  </div>
+
+  <div class="col-3">
+    <div class="btn-group" role="group" aria-label="User Search Type Buttons">
+
+      <input
+        type="radio"
+        class="btn-check"
+        id="username-search-type-btn"
+        name="userSearchType"
+        formControlName="userSearchType"
+        value="{{UserSearchType.USERNAME}}"
+        autocomplete="off">
+      <label class="btn btn-outline-primary" for="username-search-type-btn">
+        Username Search
+      </label>
+
+      <input
+        type="radio"
+        class="btn-check"
+        id="email-search-type-btn"
+        name="userSearchType"
+        formControlName="userSearchType"
+        value="{{UserSearchType.EMAIL}}"
+        autocomplete="off">
+      <label class="btn btn-outline-primary" for="email-search-type-btn">
+        Email Search
+      </label>
+    </div>
+  </div>
+</div>
+
+<div class="mb-3">
+  <button
+    (click)="onSaveResponse()"
+    [disabled]="!isSaveResponseEnabled()"
+    type="button"
+    class="btn btn-primary">
+    Save Response
+  </button>
+</div>
+
+<app-user-access-determination-editor
+  [userAccessRequests]="userAccessRequests"
+  (isSaveEnabled)="updateIsSaveEnabled($event)"></app-user-access-determination-editor>

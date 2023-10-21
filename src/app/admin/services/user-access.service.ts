@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Observable, of} from "rxjs";
-import {UserAccessRequest, UserAccessResponse} from "../../models/user-access.model";
+import {UserAccessDecision, UserAccessRequest, UserAccessResponse} from "../../models/user-access.model";
 
 @Injectable({
   providedIn: 'root'
@@ -11,28 +11,57 @@ export class UserAccessService {
 
   }
 
-  getUserAccessRequests(): Observable<UserAccessRequest[]> {
+  getSingleUserAccessRequestsByEmail(userEmail: string): Observable<UserAccessRequest> {
+    return of(
+      {
+        userEmail: 'test-by-email@email.com',
+        username: 'test-by-email',
+        requestDate: new Date('01/01/2023'),
+        approvalResponse: UserAccessDecision.UNDECIDED
+      },
+    );
+  }
+
+  getSingleUserAccessRequestsByUsername(username: string): Observable<UserAccessRequest> {
+    return of(
+      {
+        userEmail: 'test-by-username@email.com',
+        username: 'test-by-username',
+        requestDate: new Date('01/01/2023'),
+        approvalResponse: UserAccessDecision.UNDECIDED
+      },
+    );
+  }
+
+  getBulkUserAccessRequests(): Observable<UserAccessRequest[]> {
     return of([
       {
-        email: 'test1@email.com',
+        userEmail: 'test1@email.com',
         username: 'test1-name',
-        requestDate: new Date('01/01/2023')
+        requestDate: new Date('01/01/2023'),
+        approvalResponse: UserAccessDecision.UNDECIDED
       },
       {
-        email: 'test2@email.com',
+        userEmail: 'test2@email.com',
         username: 'test2-name',
-        requestDate: new Date('02/02/2023')
+        requestDate: new Date('02/02/2023'),
+        approvalResponse: UserAccessDecision.UNDECIDED
       },
       {
-        email: 'test3@email.com',
+        userEmail: 'test3@email.com',
         username: 'test3-name',
-        requestDate: new Date('03/03/2023')
+        requestDate: new Date('03/03/2023'),
+        approvalResponse: UserAccessDecision.UNDECIDED
       }
     ]);
   }
 
-  answerRequests(userAccessResponses: UserAccessResponse[]): Observable<void> {
-    return of()
+  updateUserAccess(userAccessResponses: UserAccessResponse): Observable<boolean> {
+    return of(true)
+  }
+
+  updateBulkUserAccess(userAccessResponses: UserAccessResponse[]): Observable<boolean> {
+    return of(true)
   }
 
 }

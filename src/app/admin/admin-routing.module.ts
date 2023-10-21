@@ -1,20 +1,35 @@
 import { NgModule } from '@angular/core';
 import {Route, RouterModule, Routes} from '@angular/router';
-import {UserAccessApprovalComponent} from "./user-access-approval/user-access-approval.component";
+import {BulkUserAccessDeterminationComponent} from "./bulk-user-access-determination/bulk-user-access-determination.component";
+import {
+  IndividualUserAccessDeterminationComponent
+} from "./individual-user-access-determination/individual-user-access-determination.component";
 
-export const userAccessApproval: Route = {
-  path: 'user-access-approval',
-  component: UserAccessApprovalComponent,
+export const bulkUndecidedUserAccess: Route = {
+  path: 'bulk-user-access-determination',
+  component: BulkUserAccessDeterminationComponent,
   data: {
     screenData: {
-      screenTitle: 'User Access Approval',
-      screenId: 'user-access-approval-1'
+      screenTitle: 'Bulk User Access Determination',
+      screenId: 'bulk-user-access-1'
+    }
+  }
+}
+
+export const individualUserAccessDetermination: Route = {
+  path: 'individual-user-access-determination',
+  component: IndividualUserAccessDeterminationComponent,
+  data: {
+    screenData: {
+      screenTitle: 'Individual User Access Determination',
+      screenId: 'individual-user-access-1'
     }
   }
 }
 
 const adminRoutes: Routes = [
-  userAccessApproval
+  bulkUndecidedUserAccess,
+  individualUserAccessDetermination
 ];
 
 @NgModule({
